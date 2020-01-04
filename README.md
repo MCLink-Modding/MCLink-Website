@@ -1,4 +1,4 @@
-# MCLink-Website
+# MCLink Website Issues
 
 Repository for issues related to the [MCLink](https://mclink.dries007.net) website.
 
