@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Services{% endblock %}
+{% block content %}
+  {{ super() }}
+  <ul>
+  {% for name in ALL_SERVICES %}
+    <li><a href="#{{ name }}">{{ name }}</a></li>
+  {% endfor %}
+  </ul>
+  {% for name, service in ALL_SERVICES|dictsort %}
+    <h2 id="{{ name }}">{{ name }}</h2>
+    {{ service|docstring|markdown(4) }}
+    <h3><a href="{{ url_for('docs', sub='endpoints') }}#api_info" class="hide">api_info</a></h3>
+    {{ listing(service.INFO) }}
+    <h3><a href="#{{ url_for('docs', sub='endpoints') }}#api_authenticate" class="hide">api_authenticate</a></h3>
+    <h4>Required</h4>
+    {{ listing(service.REQUIRED_ARGS) }}
+    <h4>Optional</h4>
+    {{ listing(service.OPTIONAL_ARGS) }}
+  {% endfor %}
+{% endblock %}
+{% macro listing(data) %}
+  <dl class="row">{% for k, v in data.items() %}
+    <dt class="col-2">{{ k }}</dt><dd class="col-10">{{ v }}</dd>
+  {% else %}
+    <dt class="col-0"></dt><dd class="col-12"><i>No Items</i></dd>
+  {% endfor %}</dl>
+{% endmacro %}

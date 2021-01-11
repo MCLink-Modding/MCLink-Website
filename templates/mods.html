@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Compatible Mods / Plugins{% endblock %}
+{% block content %}
+  {{ super() }}
+
+  <p>Want to create an integration project? See <a href="{{ url_for('docs') }}" class="hide">Developer documentation</a>.<br>
+    Created a project and want it in the list? <a href="{{ url_for('page', p='about') }}" class="hide">Contact me.</a></p>
+
+  {% for grouper, list in MODS|groupby('official') %}
+    <h2>{{ 'Official' if grouper else 'Thrid Party' }}</h2>
+    <ul class="list-unstyled">
+    {% for mod in list %}
+      {% if mod.page %}
+        <li><span class="fal fa-caret-right"></span> <a href="{{ url_for('page', p='mods/' + mod.page) }}">{{ mod.name }}</a></li>
+      {% else %}
+        <li><span class="fal fa-caret-right"></span> {{ mod.name }}, not available yet.</li>
+      {% endif %}
+    {% endfor %}
+    </ul>
+  {% endfor %}
+{% endblock %}

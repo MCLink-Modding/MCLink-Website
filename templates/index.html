@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Welcome{% endblock %}
+{% block content %}
+  {{ super() }}
+  <p class="lead">
+    Making it easy to create subscriber only Minecraft&trade; servers <span title="Well, it was not named MCLink back then and could only do Twitch">since 2014</span>.
+  </p>
+  <!--<p><a href="https://www.patreon.com/apps/mclink">Recognized as a legitimate app by Patreon!</a></p>-->
+  <h2>Features</h2>
+  <ul>
+    <li><em>Does not replace existing whitelist.</em><br/>
+      You can still manually whitelist people. OPs also bypass the authentication check.</li>
+    <li><em>No wait time.</em><br/>
+      Once your accounts are linked, server access is instant.</li>
+    <li><em>No need to "whitelist yourself" for every server.</em><br/>
+      Linked accounts work across all servers that use MCLink.</li>
+    <li><em>Multi-platform support.</em></li>
+    <li><em>Multi-service support.</em></li>
+    <li><em>Multi-community servers.</em><br/>
+      Any combination of services and server owners is possible.</li>
+  </ul>
+  
+  <h2>Supported services</h2>
+  <ul class="list-unstyled">
+  {% for name, service in ALL_SERVICES.items() %}
+    <li><span class="{{ service.FA_ICON }} fa-fw"></span> <a class="hide" href="{{ service.WEBSITE }}">{{ name }}</a></li>
+  {% endfor %}
+  </ul>
+{% endblock %}

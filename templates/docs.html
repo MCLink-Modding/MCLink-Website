@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Developer documentation{% endblock %}
+{% block content %}
+  {{ super() }}
+
+  <h2>Required reading</h2>
+  <ul>
+    <li><b>Before</b> you release any project interfacing with MCLink, <a href="{{ url_for('page', p='about') }}">contact us</a>. This includes any 'limited' or 'beta' release.</li>
+    <li>Any use of this API must also comply with the <a href="{{ url_for('page', p='about') }}">Terms of Service</a>.</li>
+    <li>Do not make bulk requests without prior approval. You may be banned from this service.</li>
+    <li>Using unrecognised services is undefended behaviour, you should always check the list of services before you start making requests.</li>
+    <li>Errors returned from <code>/api/...</code> urls are json objects with at least the following keys:<br />
+      <code class="json">{"error": true, "status": 000, "description": "Possibly helpful message."}</code><br />
+      <small>Unless the backend server is down, then a generic 502 page will be returned.</small>
+    </li>
+  </ul>
+
+  <h2>Documentation links</h2>
+  <ul>
+    <li><a href="{{ url_for('docs', sub='endpoints') }}">Endpoints</a></li>
+    <li><a href="{{ url_for('docs', sub='services') }}">Services</a></li>
+  </ul>
+{% endblock %}

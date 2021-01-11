@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block title %}Forge{% endblock %}
+{% block content %}
+  {{ super() }}
+
+  <iframe src="https://www.cfwidget.com/minecraft/mc-mods/mclink" width="100%" style="border: none; max-width: 600px;"></iframe>
+
+  <p>Available via <a href="https://minecraft.curseforge.com/projects/mclink">minecraft.curseforge.com</a> or <a href="https://www.curseforge.com/minecraft/mc-mods/mclink">curseforge.com</a></p>
+  <p>While it's not required to have the mod on the client, I do recommend adding it to your modpack. This may be used for better compatibility in the future.</p>
+  <p>If you need a (back)port to a older Minecraft version, please <a href="{{ url_for('page', p='about') }}" class="hide">contact me</a>.</p>
+
+  <h3>Configuration example</h3>
+  <p><code>/config/mclink.cfg</code> from version <code>0.2.0</code>. <small>Feel free to let me know if the format is changed and I forgot to update it here.</small></p>
+  <pre><code># Configuration file
+
+##########################################################################################################
+# Services
+#--------------------------------------------------------------------------------------------------------#
+# All service options are put here.
+# Blank ones will be added if new services are added, old ones are not removed.
+# Check the MCLink website for a config file example.
+##########################################################################################################
+
+Services {
+    # Website: https://www.gamewisp.com
+    # Arguments must be in this exact order. Use an empty string ("") to skip an argument.
+    # Only put in values, not the names of the arguments.
+    # Required arguments:
+    #  - TOKEN: Your api token.
+    #  - tier_id: Must be an integer. Minimal tier.
+    # Optional arguments:
+    #
+    S:GameWisp <
+     >
+
+    # Website: https://www.patreon.com
+    # Arguments must be in this exact order. Use an empty string ("") to skip an argument.
+    # Only put in values, not the names of the arguments.
+    # Required arguments:
+    #  - TOKEN: Your api token.
+    #  - amount_cents: Must be an integer. Minimal amount of money pledged, in cents.
+    # Optional arguments:
+    #
+    S:Patreon <
+        TOKEN1 500
+        TOKEN2 300
+     >
+
+    # Website: https://twitch.tv
+    # Arguments must be in this exact order. Use an empty string ("") to skip an argument.
+    # Only put in values, not the names of the arguments.
+    # Required arguments:
+    #  - TOKEN: Your api token.
+    # Optional arguments:
+    #  - sub_plan: Accepted values: 'Prime', '1000', '2000', '3000' If provided, sets the minimal sub_plan. Prime is lowest (set equivalent to 1). By default, all tiers are accepted.
+    #
+    S:Twitch <
+        TOKEN1 3000
+        TOKEN2
+        TOKEN3
+     >
+}
+
+general {
+    # Use the ingame command /mclink to update this. Keeps track of if the server is closed. [default: false]
+    B:closed=false
+
+    # The message people get when the server is closed. [default: The server is currently closed for the public.]
+    S:closedMessage=The server is currently closed for the public.
+
+    # The message people get when an error happens while MCLink checks their ID. [default: MCLink could not verify your status. Please contact a server admin.]
+    S:errorMessage=MCLink could not verify your status. Please contact a server admin.
+
+    # The message used to kickAsync players. Make sure to include instructions on how to get on! [default: This is an MCLink protected server. Link your accounts via https://mclink.dries007.net and make sure you are subscribed to the right people.]
+    S:kickMessage=This is an MCLink protected server. Link your accounts via https://mclink.dries007.net and make sure you are subscribed to the right people.
+
+    # Show important status messages to level 2+ OP players when they log in. [default: true]
+    B:showStatus=true
+
+    # Timeout for the API requests in seconds. Keep this high enough to avoid players being kicked while actually being authorized. 0 = infinite timeout [range: 0 ~ 300, default: 30]
+    I:timeout=30
+}
+</code></pre>
+{% endblock %}

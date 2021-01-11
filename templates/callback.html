@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}{{ service.NAME }} Callback{% endblock %}
+{% block content %}
+  {{ super() }}
+  {% if status %}
+    <div class="alert alert-success" role="alert">
+      <b>YEY!</b> The link worked! You can now close this tab.<br/>You should get a confirmation message ingame.
+    </div>
+  {% else %}
+    <div class="alert alert-danger" role="alert">
+      <b>Oh no!</b> The link failed! Please try again.
+      You can use <code>/link {{ service.NAME }}</code> ingame to request a new link.
+    </div>
+  {% endif %}
+  <p>You can close this page.</p>
+{% endblock %}

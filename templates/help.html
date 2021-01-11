@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Instructions{% endblock %}
+{% block content %}
+  {{ super() }}
+  <p>For general information about what MCLink is/does, see the home <a href="{{ url_for('page', p='index') }}">page</a>.</p>
+  <p>By using this service, you agree to the <a href="{{ url_for('page', p='about') }}">Terms of Service, Privacy &amp; Cookie Policy, and Disclaimer</a>.</p>
+  <h2>For players</h2>
+  <p>
+    This service is independent of the streamer(s) thus you should only need to do this once! <br />
+    You only have to link the services you need, no need to make an account on a service you won't use.
+  </p>
+  <ol>
+    <li>Connect to <code>{{ SERVER_ADDR }}:{{ SERVER_PORT }}</code> with a Minecraft&trade; <small>(version 1.10.2 to <strong>1.16.3</strong>)</small> client.</li>
+    <li>Follow the instructions in the Minecraft&trade; chat.</li>
+    <li>Authorize us to use your account information by clicking "Log in", "Authorise", "Ok" or similar.</li>
+    <li>You will get a confirmation in-game when the link went through.</li>
+    <li>Leave the special linking server.</li>
+    <li title="PROFIT!">Join your favorite streamers servers!</li>
+  </ol>
+  <h2>For server operators / streamers</h2>
+  <p>If you are a server operator you need to have the streamer follow these instructions and give you the API token.</p>
+  <ol>
+    <li><b>Follow the instructions for players above.</b> Your accounts must also remain linked!</li>
+    <li>Get an API token by using <code>/api</code> and saving the result somewhere.</li>
+    <li>Leave the special linking server.</li>
+    <li>Install and configure a compatible mod/plugin. <a href="{{ url_for('page', p='mods') }}" class="hide">Click here for a list and more info.</a></li>
+    <li title="PROFIT!">Invite your players to your server!</li>
+    <li>Do <b>not</b> enable the build-in 'vanilla' whitelist!</li>
+  </ol>
+  <p>If you need to reset the api key, use <code>/api reset</code>. If you loose the key you can just do <code>/api</code> and get the same code back.</p>
+  <p><small>If you represent a community, send me a heads-up. I'd love to know who is using MCLink and what approximate size server they run.
+    (Average player count etc.) I'd love to add a list of communities trusting MCLink somewhere, but I don't really track anyone so I can't find this out on my own.</small></p>
+
+  <h2>A tutorial video</h2>
+  <iframe width="640" height="360" src="https://www.youtube.com/embed/n1Kvp0Y3cmc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+  <h2>Remove links or re-link an account</h2>
+  <p>
+    You can remove all linking information from your account by using the <code>/removeme</code> command.<br/>
+    If you only want to re-link one account, for example after changing a username, use the <code>/link &lt;NAME&gt;</code> command.<br/>
+    If you have lost access to your Minecraft account and wish to remove all link information, <a href="{{ url_for('page', p='about') }}" class="hide">contact us</a>.
+  </p>
+{% endblock %}
