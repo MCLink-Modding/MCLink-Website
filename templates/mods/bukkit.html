@@ -35,7 +35,10 @@
 # Required arguments:
 #  - TOKEN: Your api token.
 #  - tier_id: Must be an integer. Minimal tier.
-# Optional arguments:
+# Example:
+#   services:
+#     GameWisp:
+#       - API_TOKEN 1
 #
 #
 # services.Patreon
@@ -46,8 +49,10 @@
 # Required arguments:
 #  - TOKEN: Your api token.
 #  - amount_cents: Must be an integer. Minimal amount of money pledged, in cents.
-# Optional arguments:
-#
+# Example:
+#  services:
+#    Patreon:
+#      - API_TOKEN 1000  
 #
 # services.Twitch
 # ~~~~~~~~~~
@@ -58,7 +63,12 @@
 #  - TOKEN: Your api token.
 # Optional arguments:
 #  - sub_plan: Accepted values: 'Prime', '1000', '2000', '3000' If provided, sets the minimal sub_plan. Prime is lowest (set equivalent to 1). By default, all tiers are accepted.
-
+# Example:
+#  services:
+#    Twitch:
+#      - API_TOKEN Prime
+#      - API_TOKEN2 3000
+#
 
 general:
   kickMessage: This is an MCLink protected server. Link your accounts via https://mclink.dries007.net
@@ -71,11 +81,11 @@ general:
 services:
   GameWisp: []
   Patreon:
-  - TOKEN1 0
-  - TOKEN2 1000
+    - TOKEN1 0
+    - TOKEN2 1000
   Twitch:
-  - TOKEN2
-  - TOKEN3 2000
+    - TOKEN2
+    - TOKEN3 2000
   </code></pre>
 
 {% endblock %}
